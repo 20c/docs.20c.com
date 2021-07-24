@@ -1,6 +1,8 @@
 
 Make sure to do each step as a separate commit, in case you run into issues later on.
 
+Adding from the ctl template to a current project is not working yet, but you can use the base files as a starting point. See https://github.com/20c/ctl-tmpl-python
+
 ## Remove old python versions
 Anything <3.6 can go
 ```
