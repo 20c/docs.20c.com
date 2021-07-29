@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "docs.20c.com"
+version = "0.1.0"
+description = "20c developer docs"
+authors = ["20C <code@20c.com>"]
+license = "Apache Software License"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+mkdocs = "^1.2.2"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
