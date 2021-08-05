@@ -5,7 +5,7 @@ Adding from the ctl template to a current project is not working yet, but you ca
 
 ## Remove old python versions
 Anything <3.6 can go
-```
+```bash
 git checkout -b rmpy2
 2to3 -wn
 # DO: RUN TESTS
@@ -13,17 +13,66 @@ git commit -a -m "2to3"
 ```
 
 ## Add poetry
-```
-git checkout -b rmpy2
-2to3 -wn
-# DO: RUN TESTS
-git commit -a -m "2to3"
+```toml
+[tool.poetry]
+name = "{{ project_name }}"
+repository = "{{ project_repo }}"
+readme = "README.md"
+version = "{{ version }}"
+description = "{{ project_description }}"
+authors = [ "20C <code@20c.com>",]
+license = "{{ project_license }}"
+classifiers = [
+  "Topic :: Software Development", 
+  "License :: OSI Approved :: Apache Software License", 
+  "Programming Language :: Python :: 3.6", 
+  "Programming Language :: Python :: 3.7", 
+  "Programming Language :: Python :: 3.8", 
+  "Programming Language :: Python :: 3.9",
+]
+
+[tool.poetry.dependencies]
+python = "^3.6"
+
+[tool.poetry.dev-dependencies]
+# test
+pytest = ">=6.0.1"
+pytest-django = ">=3.8.0"
+pytest-cov = "*"
+pytest-pythonpath = "*"
+
+# lint
+bandit = "^1.6.2"
+black = "^20.8b1"
+isort = "^5.7.0"
+flake8 = "^3.8.4"
+
+# docs
+markdown = "*"
+markdown-include = ">=0.5,<1"
+mkdocs = ">=1.0.0,<2.0.0"
+
+# ctl
+ctl = "^1.0.0"
+jinja2 = "^2.11.2"
+tmpl = "^0.3.0"
+
+[tool.poetry.plugins."markdown.extensions"]
+pymdgen = "pymdgen.md:Extension"
+
+[build-system]
+requires = [ "poetry>=0.12",]
+build-backend = "poetry.masonry.api"
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
 ```
 
 ## Add ctl
 
 ## Clean up code
-```
+```bash
 ag future
 ag past
 ag XXX
@@ -37,13 +86,14 @@ git commit -a -m "isort, pyupgrade, black"
 ```
 
 ## Spell check
-```
+```bash
 # DO: spell check, at least readme
 # DO: RUN TESTS
 git commit -a -m "spell check"
 ```
 
 ### OLD
+```bash
 find . -type d \( -path ./.tox -o -path ./.venv \) -prune -false -o -name '*.py' -print0 | xargs -0 pyupgrade --py36-plus
 git commit -a -m "pyupgrade"
 
