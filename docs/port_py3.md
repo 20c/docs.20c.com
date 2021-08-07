@@ -96,6 +96,7 @@ multi_line_output = 3
 ```bash
 ag future
 ag past
+ag six
 ag XXX
 # DO: fix as necessary
 update tox.ini
