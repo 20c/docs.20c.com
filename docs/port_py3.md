@@ -1,7 +1,28 @@
 
 Make sure to do each step as a separate commit, in case you run into issues later on.
 
+
+Create a virtualenv and install 2to3, and possibly tox or whatever you'll need.
+
+```sh
+python3 -m venv ~/.local/pyenv/2to3
+. ~/.local/pyenv/2to3/bin/activate
+pip install -U pip 2to3 tox
+```
+
 Adding from the ctl template to a current project is not working yet, but you can use the base files as a starting point. See https://github.com/20c/ctl-tmpl-python
+
+## Run tests
+
+Before starting, make sure the existing tests pass. Generally, tox is used for testing, so you'll have to look for how it's tested, but if it's tox, just test in a single env.
+
+Look in the tox.ini file and see what the environments are under `envlist`, you might have to specify more for the env.
+
+```sh
+tox -e py36
+```
+
+
 
 ## Remove old python versions
 Anything <3.6 can go
@@ -80,7 +101,7 @@ ag XXX
 update tox.ini
 add pre-commit
 
-pre-commit run --all-files
+poetry run pre-commit run --all-files
 # RUN TESTS
 git commit -a -m "isort, pyupgrade, black"
 ```
