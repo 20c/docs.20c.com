@@ -18,10 +18,14 @@ Before starting, make sure the existing tests pass. Generally, tox is used for t
 
 Look in the tox.ini file and see what the environments are under `envlist`, you might have to specify more for the env.
 
+e.g. #1
 ```sh
 tox -e py36
 ```
-
+e.g. #2
+```sh
+tox -e py38-django30-drf
+```
 
 
 ## Remove old python versions
