@@ -64,7 +64,6 @@ python = "^3.6"
 pytest = ">=6.0.1"
 pytest-django = ">=3.8.0"
 pytest-cov = "*"
-pytest-pythonpath = "*"
 
 # lint
 bandit = "^1.6.2"
